@@ -45,6 +45,7 @@ var jsdom_1 = require("jsdom");
 var xml_sitemap_1 = __importDefault(require("xml-sitemap"));
 var config_1 = require("../src/config");
 var radar_1 = require("./generateJson/radar");
+var notionToMD_1 = require("./notionToMD");
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = "production";
 process.env.NODE_ENV = "production";
@@ -60,8 +61,11 @@ var createStaticFiles = function () { return __awaiter(void 0, void 0, void 0, f
         switch (_a.label) {
             case 0:
                 console.log("starting static");
-                return [4 /*yield*/, (0, radar_1.createRadar)()];
+                return [4 /*yield*/, (0, notionToMD_1.notionData)()];
             case 1:
+                _a.sent();
+                return [4 /*yield*/, (0, radar_1.createRadar)()];
+            case 2:
                 radar = _a.sent();
                 (0, fs_1.copyFileSync)("build/index.html", "build/overview.html");
                 (0, fs_1.copyFileSync)("build/index.html", "build/help-and-about-tech-radar.html");
