@@ -32,7 +32,7 @@ const generateJson = async () => {
   const { save } = require("./generateJson/file");
 
   const radar = await createRadar();
-  console.log(radar)
+  console.log(radar);
   await save(JSON.stringify(radar), paths.radarJson);
 };
 

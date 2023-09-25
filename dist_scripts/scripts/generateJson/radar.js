@@ -103,9 +103,11 @@ var createRadar = function () { return __awaiter(void 0, void 0, void 0, functio
             case 0: return [4 /*yield*/, (0, file_1.getAllMarkdownFiles)((0, file_1.radarPath)())];
             case 1:
                 fileNames = _a.sent();
+                console.log(fileNames);
                 return [4 /*yield*/, createRevisionsFromFiles(fileNames)];
             case 2:
                 revisions = _a.sent();
+                console.log(revisions);
                 filterdRevisions = revisions.filter(function (r) { return r !== undefined; });
                 allReleases = getAllReleases(filterdRevisions);
                 items = createItems(filterdRevisions);
@@ -129,7 +131,6 @@ var checkAttributes = function (fileName, attributes) {
     if (!quadrants.includes(attributes.quadrant)) {
         throw new Error("Error: ".concat(fileName, " has an illegal value for 'quadrant' - must be one of ").concat(quadrants));
     }
-    console.log(attributes);
     return attributes;
 };
 var createRevisionsFromFiles = function (fileNames) {
@@ -140,7 +141,7 @@ var createRevisionsFromFiles = function (fileNames) {
             html = html.replace(/a href="http/g, 'a target="_blank" rel="noopener noreferrer" href="http');
             console.log(fm);
             var attributes = checkAttributes(fileName, fm.attributes);
-            console.log("fm_attributes", attributes);
+            console.log(attributes);
             if (attributes) {
                 return __assign(__assign(__assign({}, itemInfoFromFilename(fileName)), attributes), { fileName: fileName, body: html });
             }

@@ -48,8 +48,8 @@ process.env.NODE_ENV = "production";
 process.on("unhandledRejection", function (err) {
     throw err;
 });
-fs.removeSync(paths.templateNodeModules);
-fs.ensureSymlinkSync(paths.appNodeModules, paths.templateNodeModules);
+// fs.removeSync(paths.templateNodeModules);
+// fs.ensureSymlinkSync(paths.appNodeModules, paths.templateNodeModules);
 var runCommand = function (command) {
     return new Promise(function (resolve, reject) {
         var executedCommand = (0, child_process_1.spawn)(command, {
@@ -80,8 +80,8 @@ var buildTemplate = function () {
     return runCommand("".concat(packageManager, " run build"));
 };
 buildTemplate().then(function () {
-    fs.copySync(paths.templateBuild, paths.appBuild);
-    fs.ensureDirSync(paths.appPublic);
-    fs.copySync(paths.appPublic, paths.appBuild);
+    // fs.copySync(paths.templateBuild, paths.appBuild);
+    // // fs.ensureDirSync(paths.appPublic);
+    // fs.copySync(paths.appPublic, paths.appBuild);
     console.log("".concat(paths.appBuild, " was created and can be deployed."));
 });

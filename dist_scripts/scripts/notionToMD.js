@@ -1,27 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -58,43 +35,38 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.notionData = void 0;
 var client_1 = require("@notionhq/client");
-var fs = __importStar(require("fs"));
-var path = __importStar(require("path"));
+var fs_1 = __importDefault(require("fs"));
+var path_1 = __importDefault(require("path"));
 var page_id = "e8ff4f278a5040d6b7b188ab36773668"; // Page ID
 var database_id = "fc70cf18bfa94a969a42b4b06e777ead";
 var secret = "secret_3WkfUjYJoXy5dYjb9Xfj0o8poF46cLkvykYCUXw5r96";
 var notion = new client_1.Client({ auth: secret });
 var fetchData = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var items, database, _i, _a, techRadarElement, isLeft, isRight, name_1, link, stage, quadrant, styledQuadrant, revision;
+    var items, database, _i, _a, techRadarElement, isLeft, isRight, name_1, link, stage, quadrant, revision;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 items = [];
-                return [4 /*yield*/, notion.databases.query({
-                        database_id: database_id,
-                    })];
+                return [4 /*yield*/, notion.databases.query({ database_id: database_id })];
             case 1:
                 database = _b.sent();
                 for (_i = 0, _a = database.results; _i < _a.length; _i++) {
                     techRadarElement = _a[_i];
                     isLeft = techRadarElement.properties.Name.title.length === 0;
-                    isRight = techRadarElement.properties.type.select === null;
+                    isRight = techRadarElement.properties.type.select === null ||
+                        techRadarElement.properties.type.select.length === 0;
                     if (isLeft || isRight)
                         continue;
-                    name_1 = techRadarElement.properties.Name.title[0].text.content;
-                    link = techRadarElement.properties.Name.title[0].text.link;
+                    name_1 = techRadarElement.properties.Name.title.at(0).text.content;
+                    link = techRadarElement.properties.Name.title.at(0).text.link;
                     stage = techRadarElement.properties.Stage.status.name.toLowerCase();
                     quadrant = techRadarElement.properties.type.select.name;
-                    styledQuadrant = quadrant.replace(/ /g, "-");
-                    revision = {
-                        name: name_1,
-                        ring: stage,
-                        title: name_1,
-                        quadrant: styledQuadrant,
-                    };
+                    revision = { name: name_1, link: link, stage: stage, quadrant: quadrant };
                     items.push(revision);
                 }
                 return [2 /*return*/, items];
@@ -104,23 +76,23 @@ var fetchData = function () { return __awaiter(void 0, void 0, void 0, function 
 var generateMarkdownFiles = function (items, outputDirectory) { return __awaiter(void 0, void 0, void 0, function () {
     var _i, items_1, item, markdownContent, filename, outputPath;
     return __generator(this, function (_a) {
-        if (!fs.existsSync(outputDirectory)) {
-            fs.mkdirSync(outputDirectory);
+        if (!fs_1.default.existsSync(outputDirectory)) {
+            fs_1.default.mkdirSync(outputDirectory);
         }
         for (_i = 0, items_1 = items; _i < items_1.length; _i++) {
             item = items_1[_i];
-            markdownContent = "---\ntitle: \"".concat(item.title, "\"\nring: \"").concat(item.ring, "\"\nquadrant: \"").concat(item.quadrant, "\"\n").concat(item.info ? "info: \"".concat(item.info, "\"") : "", "\nfeatured: ").concat(item.featured !== undefined ? item.featured : true, "\n---\n\nText goes here. You can use **markdown** here.");
+            markdownContent = "---\n      title: \"".concat(item.name, "\"\n      ring: \"").concat(item.stage, "\"\n      quadrant: \"").concat(item.quadrant, "\"\n      ").concat(item.link ? "info: \"".concat(item.link, "\"") : "", "\n      featured: ").concat(item.link !== null ? item.link : true, "\n      ---\n      Text goes here. You can use **markdown** here.");
             filename = "".concat(item.name, ".md");
-            outputPath = path.join(outputDirectory, filename);
+            outputPath = path_1.default.join(outputDirectory, filename);
             // Write the Markdown content to the file
-            fs.writeFileSync(outputPath, markdownContent);
+            fs_1.default.writeFileSync(outputPath, markdownContent);
             console.log("Saved ".concat(filename, " to ").concat(outputPath));
         }
         console.log("Markdown files saved successfully.");
         return [2 /*return*/];
     });
 }); };
-var notionData = function () { return __awaiter(void 0, void 0, void 0, function () {
+(function () { return __awaiter(void 0, void 0, void 0, function () {
     var items;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -133,5 +105,4 @@ var notionData = function () { return __awaiter(void 0, void 0, void 0, function
                 return [2 /*return*/];
         }
     });
-}); };
-exports.notionData = notionData;
+}); })();
