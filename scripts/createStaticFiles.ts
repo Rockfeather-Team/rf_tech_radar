@@ -105,6 +105,7 @@ interface FileElements {
   link: string | null;
   ring: string;
   quadrant: string;
+  team: string;
 }
 
 interface TechRadarElement {
@@ -161,8 +162,8 @@ const fetchData = async (): Promise<FileElements[]> => {
       "-"
     );
     console.log(quadrant);
-
-    const revision = { name, link, ring: stage, quadrant };
+    const team = techRadarElement.properties.team.multi_select.map((x : any) => x.name)
+    const revision = { name, link, ring: stage, quadrant, team };
     items.push(revision);
   }
   return items;
@@ -178,9 +179,10 @@ const generateMarkdownFiles = async (
 
   for (const item of items) {
     const markdownContent = `---
-title: "${item.name}"
-ring: "${item.ring}"
-quadrant: "${item.quadrant}"
+title: ${item.name}
+ring: ${item.ring}
+quadrant: ${item.quadrant}
+tags: [${item.team}]
 ---
     
 Text goes here. You can use **markdown** here.`;

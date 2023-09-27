@@ -1,18 +1,22 @@
-# AOE Technology Radar
-A static site generator for AOE Technology Radar
+### Order of execution
+```
+npx aoe_technology_radar-createStaticFiles
+```
+```
+npx aoe_technology_radar-generateJson
+```
+```
+npm run prepare
+```
+```
+npm run build
+```
+```
+cd build
+python3 -m http.server 8080
+```
 
-## Looking for the AOE Tech Radar content?
-The repository is now found here: https://github.com/AOEpeople/techradar
-
-The AOE Tech radar is deployed here: https://www.aoe.com/techradar/index.html
-
-## Create your own radar
-The generator is free to use under Open Source License - in fact there are already some other Radars published based on our Radar and there are also Contributions back.
-
-However, please be aware:
-
-- It would be nice to mention in radar that the generator is based on this repository.
-- Also, when you want to reuse the CSS and Styling: Change the font (it is a licensed font) and the colors (It using AOE CI)
+## Old readme file
 
 ### Use and build the radar
 Create a new npm project and add the tech radar as a dependency

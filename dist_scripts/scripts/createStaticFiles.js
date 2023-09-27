@@ -124,7 +124,7 @@ var createStaticFiles = function () { return __awaiter(void 0, void 0, void 0, f
     });
 }); };
 var fetchData = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var notion, items, database, _i, _a, techRadarElement, isLeft, isRight, name_1, link, stage, quadrant, revision;
+    var notion, items, database, _i, _a, techRadarElement, isLeft, isRight, name_1, link, stage, quadrant, team, revision;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -150,7 +150,8 @@ var fetchData = function () { return __awaiter(void 0, void 0, void 0, function 
                     stage = techRadarElement.properties.Stage.status.name.toLowerCase();
                     quadrant = techRadarElement.properties.type.select.name.replace(/ /g, "-");
                     console.log(quadrant);
-                    revision = { name: name_1, link: link, ring: stage, quadrant: quadrant };
+                    team = techRadarElement.properties.team.multi_select.map(function (x) { return x.name; });
+                    revision = { name: name_1, link: link, ring: stage, quadrant: quadrant, team: team };
                     items.push(revision);
                 }
                 return [2 /*return*/, items];
@@ -165,7 +166,7 @@ var generateMarkdownFiles = function (items, outputDirectory) { return __awaiter
         }
         for (_i = 0, items_1 = items; _i < items_1.length; _i++) {
             item = items_1[_i];
-            markdownContent = "---\ntitle: \"".concat(item.name, "\"\nring: \"").concat(item.ring, "\"\nquadrant: \"").concat(item.quadrant, "\"\n---\n    \nText goes here. You can use **markdown** here.");
+            markdownContent = "---\ntitle: ".concat(item.name, "\nring: ").concat(item.ring, "\nquadrant: ").concat(item.quadrant, "\ntags: [").concat(item.team, "]\n---\n    \nText goes here. You can use **markdown** here.");
             filename = "".concat(item.name, ".md");
             outputPath = path_1.default.join(outputDirectory, filename);
             // Write the Markdown content to the file
