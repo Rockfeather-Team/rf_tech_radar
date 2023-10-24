@@ -12,9 +12,9 @@
   }
 
   &:hover {
-    background: var(--color-gray-dark-alt2);
+    background: var(--color-gray-dark-alt);
+    color: var(--color-gray-light);
   }
-
   &:first-child {
     border-top: 1px solid var(--color-gray-normal);
   }
