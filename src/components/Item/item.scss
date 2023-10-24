@@ -48,6 +48,9 @@
       color: var(--color-gray-light-alt);
     }
   }
+  &__title:hover {
+    color: var(--color-gray-light);
+  }
 
   &__info {
     margin-top: 5px;
