@@ -2,18 +2,18 @@
 
 .hero-headline {
   font-size: 38px;
-  font-weight: 300;
+  font-weight: bold;
   line-height: 1.2;
-  color: var(--color-white);
+  color: var(--color-brand);
   padding: 0;
   margin: 0;
 
   &__alt {
-    color: var(--color-gray-light);
+    color: var(--color-brand);
   }
 
   &--inverse {
-    color: var(--color-gray-light);
+    color: var(--color-brand);
   }
 
   @media (max-width: $until-sm) {

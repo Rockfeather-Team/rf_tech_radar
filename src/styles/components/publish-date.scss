@@ -1,7 +1,7 @@
 @import "../../styles/sccs-vars.scss";
 
 .publish-date {
-  color: var(--color-gray-normal);
+  color: var(--color-gray-dark);
   text-align: right;
 
   @media (max-width: $until-sm) {

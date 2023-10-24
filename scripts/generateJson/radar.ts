@@ -57,16 +57,11 @@ const checkAttributes = (fileName: string, attributes: ItemAttributes) => {
     );
   }
 
-  if (config.tags) {
-    for (let tag of config.tags) {
-      if (attributes.tags && attributes.tags.includes(tag)) {
-        return attributes;
-      }
-    }
-    return undefined;
-  } else {
+  console.log(attributes)
+
+
     return attributes;
-  }
+  
 };
 
 const createRevisionsFromFiles = (fileNames: string[]) => {
@@ -79,7 +74,9 @@ const createRevisionsFromFiles = (fileNames: string[]) => {
           /a href="http/g,
           'a target="_blank" rel="noopener noreferrer" href="http'
         );
+        console.log(fm)
         const attributes = checkAttributes(fileName, fm.attributes);
+        console.log('fm_attributes', attributes)
         if (attributes) {
           return {
             ...itemInfoFromFilename(fileName),
