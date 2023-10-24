@@ -1,11 +1,11 @@
 @font-face {
     font-family: "DIN";
-    src: url("fonts/Univers-BQ-Regular.otf");
+    src: url("fonts/Univers-Condensed-Bold.ttf");
     font-weight: normal;
 }
 
 @font-face {
     font-family: "DIN";
-    src: url("fonts/Univers-Condensed-Bold.ttf");
+    src: url("fonts/Univers-BQ-Regular.otf");
     font-weight: 300;
 }
