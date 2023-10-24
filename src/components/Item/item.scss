@@ -6,14 +6,17 @@
   transition: background 200ms ease-out;
   color: var(--color-gray-dark);
   box-sizing: border-box;
+  background: var(--color-gray-light);
+
 
   &.is-active {
-    background: var(--color-gray-light-alt);
+    background: var(--color-gray-normal);
     color:var(--color-gray-dark);
   }
 
   &:hover {
-    background: var(--color-gray-light-alt2);
+    background: var(--color-gray-dark-alt);
+    
   }
 
   &:first-child {
