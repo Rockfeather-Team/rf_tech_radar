@@ -1,7 +1,7 @@
 .radar-grid {
     position: relative;
     margin-bottom: 50px;
-    color: white;
+    color:var(--color-gray-dark);
     display: none;
 }
 
@@ -28,7 +28,7 @@
 
 .quadrant-label .description {
     font-size: 14px;
-    color: #a6b1bb
+    color: var(--color-gray-dark);
 }
 
 .quadrant-label .icon-link {

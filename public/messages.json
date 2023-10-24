@@ -1,14 +1,16 @@
 {
-  "footerFootnote": "AOE is a leading global provider of services for digital transformation and digital business models. AOE relies exclusively on established Enterprise Open Source technologies. This leads to innovative solutions, digital products and portals in agile software projects, and helps build long-lasting, strategic partnerships with our customers.",
+  "footerFootnote": "Welcome to Rockfeather! We are Rockfeather. We use Data Visualization, Data Science, Data Engineering, Process Mining and Low-Code technology to build smart solutions. Together with our customers, we create best-in-class solutions for various industries and functions. Therefore, this is how we embrace technology and empower ambitious people.",
   "legalInformationLabel": "Legal Information",
-  "legalInformationLink": "https://www.aoe.com/en/imprint.html",
+  "legalInformationLink": "https://rockfeather.com/privacy-policy/",
   "pageHelp": {
     "headlinePrefix": "How to use the",
     "paragraphs": [
       {
-        "headline": "WIP - Introduction",
+        "headline": "Introduction",
         "values": [
-           "N/A"
+           "Welcome to Rockfeather's Tech Radar, your compass in the ever-changing landscape of technology innovation. At Rockfeather, we pride ourselves on being pioneers in the digital realm, crafting solutions that redefine possibilities. In this dynamic tech radar, we unveil the cutting-edge technologies and methodologies propelling us toward the future.",
+
+           "Explore the intersections of creativity and functionality, where our team of experts curates a collection of transformative tools and approaches. Witness the evolution of languages, frameworks, tools, and methodologies, each meticulously chosen to empower your projects and elevate your business strategies."
         ]
       },
       {
@@ -20,19 +22,19 @@
     ],
     "quadrants": [
       {
-        "description": "WIP",
+        "description": "Essential coding tools for data analysis",
         "name": "Languages and frameworks"
       },
       {
-        "description": "WIP",
+        "description": "Work-in-progress tools optimizing data processing tasks",
         "name": "Tools"
       },
       {
-        "description": "WIP",
+        "description": "Evolving techniques shaping precise data analysis strategies",
         "name": "Methods"
       },
       {
-        "description": "WIP",
+        "description": "Emerging services broadening data science applications",
         "name": "Other services"
       }
     ],
@@ -76,32 +78,8 @@
   "searchPlaceholder": "What are you looking for?",
   "socialLinks": [
     {
-      "href": "https://www.facebook.com/aoepeople",
-      "iconName": "facebook"
-    },
-    {
-      "href": "https://twitter.com/aoepeople",
-      "iconName": "twitter"
-    },
-    {
-      "href": "https://www.linkedin.com/company/aoe",
+      "href": "https://www.linkedin.com/company/rockfeather",
       "iconName": "linkedIn"
-    },
-    {
-      "href": "https://www.xing.com/company/aoe",
-      "iconName": "xing"
-    },
-    {
-      "href": "https://www.instagram.com/aoepeople",
-      "iconName": "instagram"
-    },
-    {
-      "href": "https://www.youtube.com/user/aoepeople",
-      "iconName": "youtube"
-    },
-    {
-      "href": "https://github.com/aoepeople",
-      "iconName": "github"
     }
   ],
   "socialLinksLabel": "Follow us:"

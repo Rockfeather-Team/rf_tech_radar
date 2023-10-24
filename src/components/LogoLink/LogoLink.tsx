@@ -20,7 +20,6 @@ export default function LogoLink({ small = false }: { small?: boolean }) {
           height="60px"
           alt={radarNameShort}
         />
-        <span className="logo-link__text">{radarNameShort}</span>
       </span>
     </Link>
   );
