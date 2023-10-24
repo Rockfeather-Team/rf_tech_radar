@@ -140,7 +140,7 @@ var createRevisionsFromFiles = function (fileNames) {
             html = html.replace(/a href="http/g, 'a target="_blank" rel="noopener noreferrer" href="http');
             console.log(fm);
             var attributes = checkAttributes(fileName, fm.attributes);
-            console.log("fm_attributes", attributes);
+            console.log('fm_attributes', attributes);
             if (attributes) {
                 return __assign(__assign(__assign({}, itemInfoFromFilename(fileName)), attributes), { fileName: fileName, body: html });
             }

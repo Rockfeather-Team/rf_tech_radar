@@ -63,9 +63,9 @@ exports.notionData = void 0;
 var client_1 = require("@notionhq/client");
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
-var page_id = "e8ff4f278a5040d6b7b188ab36773668"; // Page ID
-var database_id = "fc70cf18bfa94a969a42b4b06e777ead";
-var secret = "secret_3WkfUjYJoXy5dYjb9Xfj0o8poF46cLkvykYCUXw5r96";
+var page_id = 'e8ff4f278a5040d6b7b188ab36773668'; // Page ID
+var database_id = 'fc70cf18bfa94a969a42b4b06e777ead';
+var secret = 'secret_3WkfUjYJoXy5dYjb9Xfj0o8poF46cLkvykYCUXw5r96';
 var notion = new client_1.Client({ auth: secret });
 var fetchData = function () { return __awaiter(void 0, void 0, void 0, function () {
     var items, database, _i, _a, techRadarElement, isLeft, isRight, name_1, link, stage, quadrant, styledQuadrant, revision;
@@ -73,9 +73,7 @@ var fetchData = function () { return __awaiter(void 0, void 0, void 0, function 
         switch (_b.label) {
             case 0:
                 items = [];
-                return [4 /*yield*/, notion.databases.query({
-                        database_id: database_id,
-                    })];
+                return [4 /*yield*/, notion.databases.query({ database_id: database_id })];
             case 1:
                 database = _b.sent();
                 for (_i = 0, _a = database.results; _i < _a.length; _i++) {
@@ -88,13 +86,8 @@ var fetchData = function () { return __awaiter(void 0, void 0, void 0, function 
                     link = techRadarElement.properties.Name.title[0].text.link;
                     stage = techRadarElement.properties.Stage.status.name.toLowerCase();
                     quadrant = techRadarElement.properties.type.select.name;
-                    styledQuadrant = quadrant.replace(/ /g, "-");
-                    revision = {
-                        name: name_1,
-                        ring: stage,
-                        title: name_1,
-                        quadrant: styledQuadrant,
-                    };
+                    styledQuadrant = quadrant.replace(/ /g, '-');
+                    revision = { name: name_1, ring: stage, title: name_1, quadrant: styledQuadrant };
                     items.push(revision);
                 }
                 return [2 /*return*/, items];
@@ -116,7 +109,7 @@ var generateMarkdownFiles = function (items, outputDirectory) { return __awaiter
             fs.writeFileSync(outputPath, markdownContent);
             console.log("Saved ".concat(filename, " to ").concat(outputPath));
         }
-        console.log("Markdown files saved successfully.");
+        console.log('Markdown files saved successfully.');
         return [2 /*return*/];
     });
 }); };
@@ -127,7 +120,7 @@ var notionData = function () { return __awaiter(void 0, void 0, void 0, function
             case 0: return [4 /*yield*/, fetchData()];
             case 1:
                 items = _a.sent();
-                return [4 /*yield*/, generateMarkdownFiles(items, "radar")];
+                return [4 /*yield*/, generateMarkdownFiles(items, 'radar')];
             case 2:
                 _a.sent();
                 return [2 /*return*/];
