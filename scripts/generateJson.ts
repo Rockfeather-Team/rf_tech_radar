@@ -15,8 +15,8 @@ process.on("unhandledRejection", (err) => {
   throw err;
 });
 
-fs.removeSync(paths.templateNodeModules);
-fs.ensureSymlinkSync(paths.appNodeModules, paths.templateNodeModules);
+// fs.removeSync(paths.templateNodeModules);
+// fs.ensureSymlinkSync(paths.appNodeModules, paths.templateNodeModules);
 
 try {
   fs.statSync(radarPath());
@@ -32,6 +32,7 @@ const generateJson = async () => {
   const { save } = require("./generateJson/file");
 
   const radar = await createRadar();
+  console.log(radar);
   await save(JSON.stringify(radar), paths.radarJson);
 };
 

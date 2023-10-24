@@ -1,6 +1,6 @@
 .chart {
-    fill: white;
-    font-size: 12px;
+    fill: rgba(0, 0, 0, 0.851);
+    font-size: 15px;
     text-align: center;
     position: relative;
     margin: 0 auto;
@@ -11,10 +11,12 @@
 }
 
 .chart .tooltip {
-    padding: 15px 15px;
-    font-size:15px;
+    padding: 20px 20px;
+    font-size:20px;
     border-radius: 11px;
     font-weight: 600;
+    font-family: "DIN";
+
 }
 
 .chart .ring-label {
