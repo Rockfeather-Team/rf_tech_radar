@@ -16,8 +16,8 @@ process.on("unhandledRejection", (err) => {
   throw err;
 });
 
-fs.removeSync(paths.templateNodeModules);
-fs.ensureSymlinkSync(paths.appNodeModules, paths.templateNodeModules);
+// fs.removeSync(paths.templateNodeModules);
+// fs.ensureSymlinkSync(paths.appNodeModules, paths.templateNodeModules);
 
 const runCommand = (command: string) =>
   new Promise((resolve, reject) => {
@@ -59,8 +59,8 @@ const buildTemplate = () => {
 };
 
 buildTemplate().then(() => {
-  fs.copySync(paths.templateBuild, paths.appBuild);
-  fs.ensureDirSync(paths.appPublic);
-  fs.copySync(paths.appPublic, paths.appBuild);
+  // fs.copySync(paths.templateBuild, paths.appBuild);
+  // // fs.ensureDirSync(paths.appPublic);
+  // fs.copySync(paths.appPublic, paths.appBuild);
   console.log(`${paths.appBuild} was created and can be deployed.`);
 });

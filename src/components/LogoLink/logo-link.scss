@@ -2,7 +2,7 @@
   display: inline-block;
   transition: 200ms all ease-out;
   width: 400px;
-  color: var(--color-white);
+  color: var(--color-gray-dark);
   text-decoration: none;
   position: relative;
 
@@ -30,7 +30,7 @@
     top: 50%;
     left: 130px;
     white-space: nowrap;
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1;
     margin-top: -1px;
     transform: translateY(-50%);
@@ -43,7 +43,7 @@
     }
 
     .logo-link__text {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .logo-link__slide {
